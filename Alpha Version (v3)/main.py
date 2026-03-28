@@ -54,7 +54,7 @@ win = UI()
 
 
 
-#%% Button Configuration
+#%% Button Configuration----------------------------------------------------------------------------------------
 
 class button:
     def __init__(self, color, x, y, width, height, text = '', textColor = (0,0,0)):
@@ -106,18 +106,18 @@ boxCoords = [[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]
 
 
 
-#%% Board
+#%% Board-------------------------------------------------------------------------------------------------------------
 
 """
 # board:
 board = []
 for i in range(9):
-    board.append(["-","-","-","-","-","-","-","-","-"])
+    board.append(["-"]*9)
 
 # megaBoard:
 megaBoard = []
 for in range(3):
-    megaBoard.append(["-","-","-"])
+    megaBoard.append(["-"]*3)
 
 """
 
@@ -141,7 +141,7 @@ megaBoard = [
 
 Winner = "-"
 
-#%% imposing rules of super tic tac toe
+#%% imposing rules of super tic tac toe-------------------------------------------------------------------------------------------
 # Two ways:
 # 1. Disable ineligible buttons (Is smarter)
 # 2. Check if button is eligible or not and then accept or decline input (Could be easier and efficient)
@@ -150,7 +150,7 @@ def whatPos(i): # [box number, square in box]
     return [[(i%9)//3, (i//9)//3], [(i%9)%3, (i//9)%3]]
 
 
-#%%--------------------------------------------------------------------- Check wins in boxes and overall board
+#%%--------------------------------------------------------------------- Check wins in boxes and overall board----------------------
 
 def checkWin():
     global Winner, megaBoard, page
@@ -198,7 +198,7 @@ def checkBox():
 
 
 
-#%%----------------------------------------------------------------------------- X and O drawing
+#%%----------------------------------------------------------------------------- X and O drawing--------------------------
 '''
 def drawX(button, color):
     pygame.draw.line(win, color = color, start_pos = (button.x, button.y), end_pos = (button.x+button.width, button.y+button.height))
@@ -227,7 +227,7 @@ def drawBigO(x,y,color):
 
 
 
-#%%------------------------------------------ Pages Configuration
+#%%------------------------------------------ Pages Configuration--------------------------------------------------------
 
 pages = [["StartPage"],
          ["PlayPage"],
@@ -239,7 +239,7 @@ current_index = 0
 
 
 
-#%% Button Creation # (color, x, y, width, height, text)
+#%% Button Creation # (color, x, y, width, height, text)-------------------------------------------------------------------------
 
 # common button for every page(except main menu)
 BackButton = button(red, 5, 10, 150, 75, text = "Back")
@@ -268,7 +268,7 @@ OwinText = button(black, 212.5, 100, 375, 75, text = 'O Player Wins!!', textColo
 
 
 
-#%% Button Disabling
+#%% Button Disabling------------------------------------------------------------------------
 
 buttonsOnAPage = {"StartPage": [PlayButton],
                   "PlayPage": [PlayOfflineButton, PlayOnlineButton, BackButton],
@@ -286,7 +286,7 @@ def disableButtons(buttonsOnPage, status = False):
 
 
 
-#%%
+#%%----------------------------------------------------------------
 
 def redrawWindow():
     global page, board
@@ -339,17 +339,7 @@ def redrawWindow():
             OwinText.draw(win)
 
 
-
-
-
-
-
-
-
-
-
-
-#%% Game start
+#%% Game start-----------------------------------------------------------------------------------
 
 #mixer.music.play(loops = -1)
 redrawWindow()
